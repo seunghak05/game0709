@@ -96,11 +96,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (!isDead && collision.CompareTag("Enemy"))
         {
             // 적과 충돌 시 튕기기
             Jump();
             isDead = true; // 한번만 실행되도록
+            GameManager.Instance.gameOverPanel.SetActive(true);
         }
         else if (collision.CompareTag("Bottom"))
         {

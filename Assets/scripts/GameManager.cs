@@ -1,8 +1,10 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject gameOverPanel;
     // 코인 개수
     public int coin = 0;
 
@@ -45,5 +47,16 @@ public class GameManager : MonoBehaviour
                 player.MissileUp(); // 플레이어에게 업그레이드 명령
             }
         }
+    }
+
+     public void Restart()
+    {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    coin = 0;
+    if (textMeshProCoin != null)
+        {
+        textMeshProCoin.SetText(coin.ToString());
+        }
+    Time.timeScale = 1f; // 게임 일시정지 해제
     }
 }
